@@ -1,9 +1,9 @@
 #pragma once
 
 #include "esphome/core/component.h"
-#include "esphome/core/esphal.h"
 #include "esphome/components/stepper/stepper.h"
 #include "esphome/components/uart/uart.h"
+#include "esphome/core/hal.h"
 
 #include <TMCStepper.h>
 
