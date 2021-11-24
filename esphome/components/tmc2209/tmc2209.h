@@ -15,8 +15,10 @@ class TMC2209 : public stepper::Stepper, public Component, public uart::UARTDevi
   TMC2209(GPIOPin *step_pin, GPIOPin *dir_pin, bool reverse_direction)
       : step_pin_(step_pin),
         dir_pin_(dir_pin),
-        reverse_direction_(reverse_direction),
-        stepper_driver_(this, 0.15f, 0b00) {}
+        reverse_direction_(reverse_direction) {
+    Stream *stream = this;
+    stepper_driver_ = new TMC2209Stepper(stream, 0.15f, 0b00);
+  }
 
   void set_sleep_pin(GPIOPin *sleep_pin) { this->sleep_pin_ = sleep_pin; }
   void setup() override;
